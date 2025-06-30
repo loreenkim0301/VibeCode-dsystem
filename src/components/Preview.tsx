@@ -371,30 +371,80 @@ TOBE:
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Button variant="ghost" size="sm" onClick={() => setCurrentView('tokens')}>
-            <Palette className="w-4 h-4 mr-2" />
-            디자인 토큰 보기
-          </Button>
-          <Button variant="ghost" size="sm" onClick={() => setCurrentView('guide')}>
-            <BookOpen className="w-4 h-4 mr-2" />
-            컴포넌트 가이드 보기
-          </Button>
-          {currentView === 'preview' && (
-            <>
               <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>Buttons</Button>
               <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>Cards</Button>
               <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>Inputs</Button>
-              <Button variant="outline" size="sm" onClick={() => scrollToSection('badges')}>Badges</Button>
-              <Button variant="outline" size="sm" onClick={() => scrollToSection('alerts')}>Alerts</Button>
-            </>
-          )}
-        </div>
+        {/* Navigation Card */}
+        <Card className="mb-12">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-2">
+              <Target className="w-5 h-5 text-blue-600" />
+              컴포넌트 탐색
+            </CardTitle>
+            <CardDescription>
+              디자인시스템의 각 영역을 탐색하고 컴포넌트를 확인해보세요
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {/* 주요 섹션 */}
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                <Layers className="w-4 h-4" />
+                주요 섹션
+              </h4>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  leftIcon={<Palette className="w-4 h-4" />}
+                  onClick={() => setCurrentView('tokens')}
+                >
+                  디자인 토큰
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  leftIcon={<BookOpen className="w-4 h-4" />}
+                  onClick={() => setCurrentView('guide')}
+                >
+                  컴포넌트 가이드
+                </Button>
+              </div>
+            </div>
+
+            {/* 컴포넌트 바로가기 */}
+            {currentView === 'preview' && (
+              <div>
+                <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  컴포넌트 바로가기
+                </h4>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>
+                    <Code className="w-3 h-3 mr-1" />
+                    Buttons
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>
+                    <BookOpen className="w-3 h-3 mr-1" />
+                    Cards
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>
+                    <Search className="w-3 h-3 mr-1" />
+                    Inputs
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('badges')}>
+                    <Star className="w-3 h-3 mr-1" />
+                    Badges
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('alerts')}>
+                    <AlertCircle className="w-3 h-3 mr-1" />
+                    Alerts
+                  </Button>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
 
         {/* Component Sections */}
         <div className="space-y-16">
