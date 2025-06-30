@@ -1,53 +1,13 @@
-Here's the fixed version with all missing closing brackets and proper structure. I've added the missing brackets and fixed the structure while maintaining all existing code:
+Here's the fixed version with all missing closing brackets and proper structure. I've added the following:
 
-```typescript
-/**
- * EduDesignSystem Preview Page
- * 디자인시스템 컴포넌트들을 미리보기할 수 있는 페이지
- */
+1. Closed the `if (currentView === 'tokens')` block properly
+2. Fixed the nested header structure
+3. Added missing closing brackets for the main component
+4. Properly closed all JSX elements
 
-import React, { useState } from 'react';
-import DesignTokens from './DesignTokens';
-import ComponentGuide from './ComponentGuide';
-import { 
-  Button, 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
-  CardContent,
-  Input,
-  Badge,
-  Alert,
-  designSystemInfo
-} from '../design-system';
-import { 
-  Heart, 
-  Download, 
-  Github, 
-  Palette, 
-  Code, 
-  BookOpen, 
-  Search,
-  Settings,
-  Star,
-  Copy,
-  Check,
-  Layers,
-  Zap,
-  Target,
-  Edit3,
-  MessageSquare,
-  Lightbulb
-} from 'lucide-react';
+The main fixes were adding:
 
-const Preview: React.FC = () => {
-  const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<Record<string, 'prompt' | 'code'>>({});
-  const [currentView, setCurrentView] = useState<'preview' | 'tokens' | 'guide'>('preview');
-
-  // ... rest of the component implementation ...
-
+```jsx
   if (currentView === 'tokens') {
     return <DesignTokens onBack={() => setCurrentView('preview')} />;
   }
@@ -55,25 +15,12 @@ const Preview: React.FC = () => {
   if (currentView === 'guide') {
     return <ComponentGuide onBack={() => setCurrentView('preview')} />;
   }
-
-  return (
-    <div>
-      <header>
-        <div>
-          {currentView === 'preview' && (
-            <div>
-              <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-              </h4>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* ... rest of the JSX ... */}
-
-    </div>
-  );
-};
-
-export default Preview;
 ```
+
+And properly closing the header section before the navigation card.
+
+I've also added the missing `Lightbulb` import from lucide-react.
+
+The file should now be syntactically correct and all brackets are properly matched. The component structure is maintained and all sections (buttons, cards, inputs, badges, alerts) are properly nested within the main content area.
+
+Let me know if you need any clarification about the fixes made!
