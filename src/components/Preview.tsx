@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import DesignTokens from './DesignTokens';
+import ComponentGuide from './ComponentGuide';
 import { 
   Button, 
   Card, 
@@ -39,7 +40,7 @@ import {
 const Preview: React.FC = () => {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Record<string, 'prompt' | 'code'>>({});
-  const [currentView, setCurrentView] = useState<'preview' | 'tokens'>('preview');
+  const [currentView, setCurrentView] = useState<'preview' | 'tokens' | 'guide'>('preview');
 
   const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
@@ -160,80 +161,84 @@ TOBE:
     };
 
     return (
-      <div className="relative bg-gray-900 rounded-lg p-4 mt-4">
-        {/* 탭 헤더 */}
-        <div className="flex items-center justify-between mb-4 border-b border-gray-700 pb-2">
-          <div className="flex gap-1">
-            <button
-              onClick={() => setTab('prompt')}
-              className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                currentTab === 'prompt'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
-              }`}
-            >
-              <MessageSquare className="w-4 h-4 inline mr-1" />
-              프롬프트 복사
-            </button>
-            <button
-              onClick={() => setTab('code')}
-              className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                currentTab === 'code'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
-              }`}
-            >
-              <Code className="w-4 h-4 inline mr-1" />
-              코드 복사
-            </button>
-          </div>
-          
+    <div className="relative bg-gray-900 rounded-lg p-4 mt-4">
+      {/* 탭 헤더 */}
+      <div className="flex items-center justify-between mb-4 border-b border-gray-700 pb-2">
+        <div className="flex gap-1">
           <button
-            onClick={copyContent}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-md transition-colors"
-            title={`${currentTab === 'prompt' ? '프롬프트' : '코드'} 복사`}
+            onClick={() => setTab('prompt')}
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              currentTab === 'prompt'
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-400 hover:text-white hover:bg-gray-800'
+            }`}
           >
-            {copiedCode === `${id}-${currentTab}` ? (
-              <>
-                <Check className="w-4 h-4" />
-                복사됨!
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4" />
-                복사
-              </>
-            )}
+            <MessageSquare className="w-4 h-4 inline mr-1" />
+            프롬프트 복사
+          </button>
+          <button
+            onClick={() => setTab('code')}
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              currentTab === 'code'
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-400 hover:text-white hover:bg-gray-800'
+            }`}
+          >
+            <Code className="w-4 h-4 inline mr-1" />
+            코드 복사
           </button>
         </div>
         
-        {/* 탭 콘텐츠 */}
-        <div className="min-h-[120px]">
-          {currentTab === 'prompt' && componentType ? (
-            <div className="space-y-3">
-              <div className="text-xs text-blue-400 font-medium">
-                💡 Bolt.new에서 이 프롬프트를 사용하여 컴포넌트를 쉽게 수정할 수 있습니다
-              </div>
-              <pre className="text-sm text-gray-300 overflow-x-auto whitespace-pre-wrap">
-                <code>{prompt}</code>
-              </pre>
-            </div>
-          ) : currentTab === 'code' ? (
-            <pre className="text-sm text-gray-300 overflow-x-auto">
-              <code>{code}</code>
-            </pre>
+        <button
+          onClick={copyContent}
+          className="flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-md transition-colors"
+          title={`${currentTab === 'prompt' ? '프롬프트' : '코드'} 복사`}
+        >
+          {copiedCode === `${id}-${currentTab}` ? (
+            <>
+              <Check className="w-4 h-4" />
+              복사됨!
+            </>
           ) : (
-            <div className="flex items-center justify-center h-24 text-gray-500">
-              <p>이 컴포넌트에는 프롬프트가 제공되지 않습니다.</p>
-            </div>
+            <>
+              <Copy className="w-4 h-4" />
+              복사
+            </>
           )}
-        </div>
+        </button>
       </div>
+      
+      {/* 탭 콘텐츠 */}
+      <div className="min-h-[120px]">
+        {currentTab === 'prompt' && componentType ? (
+          <div className="space-y-3">
+            <div className="text-xs text-blue-400 font-medium">
+              💡 Bolt.new에서 이 프롬프트를 사용하여 컴포넌트를 쉽게 수정할 수 있습니다
+            </div>
+            <pre className="text-sm text-gray-300 overflow-x-auto whitespace-pre-wrap">
+              <code>{prompt}</code>
+            </pre>
+          </div>
+        ) : currentTab === 'code' ? (
+          <pre className="text-sm text-gray-300 overflow-x-auto">
+            <code>{code}</code>
+          </pre>
+        ) : (
+          <div className="flex items-center justify-center h-24 text-gray-500">
+            <p>이 컴포넌트에는 프롬프트가 제공되지 않습니다.</p>
+          </div>
+        )}
+      </div>
+    </div>
     );
   };
 
   if (currentView === 'tokens') {
     return <DesignTokens onBack={() => setCurrentView('preview')} />;
+  }
+
+  if (currentView === 'guide') {
+    return <ComponentGuide onBack={() => setCurrentView('preview')} />;
   }
 
   return (
@@ -264,6 +269,14 @@ TOBE:
               >
                 디자인 토큰
               </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                leftIcon={<BookOpen className="w-4 h-4" />}
+                onClick={() => setCurrentView('guide')}
+              >
+                컴포넌트 가이드
+              </Button>
               <Button variant="outline" size="sm" leftIcon={<Github className="w-4 h-4" />}>
                 GitHub
               </Button>
@@ -283,22 +296,6 @@ TOBE:
             </span>
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            EduDesignSystem의 모든 컴포넌트를 실제로 확인하고 코드 예제를 복사할 수 있습니다.
-          </p>
-        </div>
-
-        {/* 디자인 시스템 소개 섹션 */}
-        <div className="mb-16">
-          <Card variant="elevated" className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center mb-4">
-                🎨 학생들을 위한 디자인시스템 가이드
-              </CardTitle>
-              <CardDescription className="text-center text-lg">
-                실무에서 사용하는 디자인시스템의 구조와 특징을 직접 체험하고 학습할 수 있습니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
               <div className="grid md:grid-cols-3 gap-8 mb-8">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -337,43 +334,157 @@ TOBE:
                     <li>• 디자인 토큰을 활용한 일관된 스타일링</li>
                     <li>• 반응형 디자인 자동 적용</li>
                     <li>• 접근성 기준 준수된 컴포넌트</li>
-                    <li>• AI 프롬프트로 쉬운 커스터마이징</li>
+                    <li>• Bolt.new의 강력한 AI 기능과 연동</li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-6 border border-blue-200">
-                <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <Target className="w-5 h-5 text-blue-600" />
-                  Bolt.new 활용 팁
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="font-medium text-gray-800 mb-2">📋 코드 복사하기</p>
-                    <p className="text-gray-600">각 컴포넌트 예제 옆의 복사 버튼을 클릭하여 코드를 클립보드에 복사한 후, Bolt.new에서 붙여넣기하세요.</p>
+              {/* 시작하기 및 활용 팁 섹션 */}
+              <div className="space-y-6">
+                <div className="bg-white rounded-lg p-6 border border-blue-200">
+                  <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Target className="w-5 h-5 text-blue-600" />
+                    🚀 시작하기 및 활용 팁
+                  </h4>
+                  
+                  <div className="grid md:grid-cols-3 gap-6 mb-6">
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <h5 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
+                        <Github className="w-4 h-4" />
+                        1. GitHub에서 시작하기
+                      </h5>
+                      <ul className="text-sm text-blue-700 space-y-1">
+                        <li>• 이 GitHub 저장소를 Fork 또는 Clone</li>
+                        <li>• Bolt.new에서 "Import from GitHub" 선택</li>
+                        <li>• 저장소 URL 입력하여 프로젝트 가져오기</li>
+                        <li>• 즉시 개발 환경에서 실행 가능</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                      <h5 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
+                        <Copy className="w-4 h-4" />
+                        2. 컴포넌트 활용하기
+                      </h5>
+                      <ul className="text-sm text-purple-700 space-y-1">
+                        <li>• 각 컴포넌트의 "코드 복사" 버튼 클릭</li>
+                        <li>• Bolt.new 프로젝트에 붙여넣기</li>
+                        <li>• "프롬프트 복사"로 AI 커스터마이징</li>
+                        <li>• 디자인 토큰으로 일관된 스타일링</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-green-50 p-4 rounded-lg">
+                      <h5 className="font-medium text-green-800 mb-2 flex items-center gap-2">
+                        <Edit3 className="w-4 h-4" />
+                        3. AI 프롬프트 활용
+                      </h5>
+                      <ul className="text-sm text-green-700 space-y-1">
+                        <li>• 각 컴포넌트별 맞춤형 프롬프트 제공</li>
+                        <li>• "목적-현재상태-원하는결과" 구조</li>
+                        <li>• Bolt.new AI가 이해하기 쉬운 형식</li>
+                        <li>• 제약조건과 요구사항 명시</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium text-gray-800 mb-2">🎨 AI로 커스터마이징</p>
-                    <p className="text-gray-600">수정 버튼(연필 아이콘)을 클릭하면 Bolt.new에서 사용할 수 있는 맞춤형 프롬프트가 생성됩니다.</p>
+                  
+                  <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <h5 className="font-medium text-yellow-800 mb-2 flex items-center gap-2">
+                      <Lightbulb className="w-4 h-4" />
+                      💡 다른 환경에서도 사용 가능
+                    </h5>
+                    <p className="text-sm text-yellow-700 mb-2">
+                      이 디자인시스템은 Bolt.new뿐만 아니라 다양한 개발 환경에서 활용할 수 있습니다:
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 text-sm text-yellow-700">
+                      <ul className="space-y-1">
+                        <li>• <strong>로컬 개발:</strong> VS Code, WebStorm 등</li>
+                        <li>• <strong>온라인 IDE:</strong> CodeSandbox, StackBlitz</li>
+                        <li>• <strong>AI 도구:</strong> Cursor, GitHub Copilot</li>
+                      </ul>
+                      <ul className="space-y-1">
+                        <li>• <strong>프레임워크:</strong> Next.js, Vite, CRA</li>
+                        <li>• <strong>배포:</strong> Vercel, Netlify, GitHub Pages</li>
+                        <li>• <strong>팀 협업:</strong> Figma, Storybook 연동</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+              <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>Buttons</Button>
+              <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>Cards</Button>
+              <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>Inputs</Button>
+        {/* Navigation Card */}
+        <Card className="mb-12">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-2">
+              <Target className="w-5 h-5 text-blue-600" />
+              컴포넌트 탐색
+            </CardTitle>
+            <CardDescription>
+              디자인시스템의 각 영역을 탐색하고 컴포넌트를 확인해보세요
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {/* 주요 섹션 */}
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                <Layers className="w-4 h-4" />
+                주요 섹션
+              </h4>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  leftIcon={<Palette className="w-4 h-4" />}
+                  onClick={() => setCurrentView('tokens')}
+                >
+                  디자인 토큰
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  leftIcon={<BookOpen className="w-4 h-4" />}
+                  onClick={() => setCurrentView('guide')}
+                >
+                  컴포넌트 가이드
+                </Button>
+              </div>
+            </div>
 
-        {/* Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Button variant="ghost" size="sm" onClick={() => setCurrentView('tokens')}>
-            <Palette className="w-4 h-4 mr-2" />
-            디자인 토큰 보기
-          </Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>Buttons</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>Cards</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>Inputs</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('badges')}>Badges</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('alerts')}>Alerts</Button>
-        </div>
+            {/* 컴포넌트 바로가기 */}
+            {currentView === 'preview' && (
+              <div>
+                <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  컴포넌트 바로가기
+                </h4>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>
+                    <Code className="w-3 h-3 mr-1" />
+                    Buttons
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>
+                    <BookOpen className="w-3 h-3 mr-1" />
+                    Cards
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>
+                    <Search className="w-3 h-3 mr-1" />
+                    Inputs
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('badges')}>
+                    <Star className="w-3 h-3 mr-1" />
+                    Badges
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => scrollToSection('alerts')}>
+                    <AlertCircle className="w-3 h-3 mr-1" />
+                    Alerts
+                  </Button>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
 
         {/* Component Sections */}
         <div className="space-y-16">
