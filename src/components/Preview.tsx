@@ -261,159 +261,159 @@ TOBE:
               <Badge variant="primary" size="sm">
                 미리보기
               </Badge>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                leftIcon={<Palette className="w-4 h-4" />}
-                onClick={() => setCurrentView('tokens')}
-              >
-                디자인 토큰
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                leftIcon={<BookOpen className="w-4 h-4" />}
-                onClick={() => setCurrentView('guide')}
-              >
-                컴포넌트 가이드
-              </Button>
               <Button variant="outline" size="sm" leftIcon={<Github className="w-4 h-4" />}>
                 GitHub
               </Button>
+      <CardContent className="space-y-8">
+        
+        {/* Button Variants */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">변형 스타일</h4>
+          <div className="flex flex-wrap gap-3 mb-4">
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+      <CardContent>
+        {/* 주요 섹션 */}
+        <div className="mb-6">
+          <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+            <Layers className="w-4 h-4" />
+            주요 섹션
+          </h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button 
+              variant="primary" 
+              size="sm" 
+              leftIcon={<Palette className="w-4 h-4" />}
+              onClick={() => setCurrentView('tokens')}
+            >
+              디자인 토큰
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="sm" 
+              leftIcon={<BookOpen className="w-4 h-4" />}
+              onClick={() => setCurrentView('guide')}
+            >
+              컴포넌트 가이드
+            </Button>
+          </div>
+        <div className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Layers className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">1. 디자인 토큰 시스템</h3>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• 색상 팔레트 (Primary, Secondary, Neutral, Semantic)</li>
+                <li>• 타이포그래피 스케일</li>
+                <li>• 스페이싱 시스템 (4px 기준)</li>
+                <li>• 그림자 및 테두리 스타일</li>
+                <li>• 애니메이션 토큰</li>
+              </ul>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Code className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">2. 핵심 컴포넌트 라이브러리</h3>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• 기본 컴포넌트 (Button, Input, Card, Badge 등)</li>
+                <li>• 레이아웃 컴포넌트 (Grid, Flex, Container)</li>
+                <li>• 네비게이션 컴포넌트 (Header, Sidebar, Breadcrumb)</li>
+                <li>• 피드백 컴포넌트 (Alert, Toast, Modal)</li>
+              </ul>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">3. Bolt.new에서 활용하기</h3>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• 컴포넌트 코드 복사 후 붙여넣기</li>
+                <li>• 디자인 토큰을 활용한 일관된 스타일링</li>
+                <li>• 반응형 디자인 자동 적용</li>
+                <li>• 접근성 기준 준수된 컴포넌트</li>
+                <li>• Bolt.new의 강력한 AI 기능과 연동</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 시작하기 및 활용 팁 섹션 */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg p-6 border border-blue-200">
+              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <Target className="w-5 h-5 text-blue-600" />
+                🚀 시작하기 및 활용 팁
+              </h4>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h5 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
+                    <Github className="w-4 h-4" />
+                    1. GitHub에서 시작하기
+                  </h5>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• 이 GitHub 저장소를 Fork 또는 Clone</li>
+                    <li>• Bolt.new에서 "Import from GitHub" 선택</li>
+                    <li>• 저장소 URL 입력하여 프로젝트 가져오기</li>
+                    <li>• 즉시 개발 환경에서 실행 가능</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-purple-50 p-4 rounded-lg">
+                  <h5 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
+                    <Copy className="w-4 h-4" />
+                    2. 컴포넌트 활용하기
+                  </h5>
+                  <ul className="text-sm text-purple-700 space-y-1">
+                    <li>• 각 컴포넌트의 "코드 복사" 버튼 클릭</li>
+                    <li>• Bolt.new 프로젝트에 붙여넣기</li>
+                    <li>• "프롬프트 복사"로 AI 커스터마이징</li>
+                    <li>• 디자인 토큰으로 일관된 스타일링</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <h5 className="font-medium text-green-800 mb-2 flex items-center gap-2">
+                    <Edit3 className="w-4 h-4" />
+                    3. AI 프롬프트 활용
+                  </h5>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>• 각 컴포넌트별 맞춤형 프롬프트 제공</li>
+                    <li>• "목적-현재상태-원하는결과" 구조</li>
+                    <li>• Bolt.new AI가 이해하기 쉬운 형식</li>
+                    <li>• 제약조건과 요구사항 명시</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                <h5 className="font-medium text-yellow-800 mb-2 flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4" />
+                  💡 다른 환경에서도 사용 가능
+                </h5>
+                <p className="text-sm text-yellow-700 mb-2">
+                  이 디자인시스템은 Bolt.new뿐만 아니라 다양한 개발 환경에서 활용할 수 있습니다:
+                </p>
+                <div className="grid md:grid-cols-2 gap-4 text-sm text-yellow-700">
+                  <ul className="space-y-1">
+                    <li>• <strong>로컬 개발:</strong> VS Code, WebStorm 등</li>
+                    <li>• <strong>온라인 IDE:</strong> CodeSandbox, StackBlitz</li>
+                    <li>• <strong>AI 도구:</strong> Cursor, GitHub Copilot</li>
+                  </ul>
+                  <ul className="space-y-1">
+                    <li>• <strong>프레임워크:</strong> Next.js, Vite, CRA</li>
+                    <li>• <strong>배포:</strong> Vercel, Netlify, GitHub Pages</li>
+                    <li>• <strong>팀 협업:</strong> Figma, Storybook 연동</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            컴포넌트 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              {' '}미리보기
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Layers className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">1. 디자인 토큰 시스템</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 색상 팔레트 (Primary, Secondary, Neutral, Semantic)</li>
-                    <li>• 타이포그래피 스케일</li>
-                    <li>• 스페이싱 시스템 (4px 기준)</li>
-                    <li>• 그림자 및 테두리 스타일</li>
-                    <li>• 애니메이션 토큰</li>
-                  </ul>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Code className="w-8 h-8 text-purple-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">2. 핵심 컴포넌트 라이브러리</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 기본 컴포넌트 (Button, Input, Card, Badge 등)</li>
-                    <li>• 레이아웃 컴포넌트 (Grid, Flex, Container)</li>
-                    <li>• 네비게이션 컴포넌트 (Header, Sidebar, Breadcrumb)</li>
-                    <li>• 피드백 컴포넌트 (Alert, Toast, Modal)</li>
-                  </ul>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Zap className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">3. Bolt.new에서 활용하기</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 컴포넌트 코드 복사 후 붙여넣기</li>
-                    <li>• 디자인 토큰을 활용한 일관된 스타일링</li>
-                    <li>• 반응형 디자인 자동 적용</li>
-                    <li>• 접근성 기준 준수된 컴포넌트</li>
-                    <li>• Bolt.new의 강력한 AI 기능과 연동</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* 시작하기 및 활용 팁 섹션 */}
-              <div className="space-y-6">
-                <div className="bg-white rounded-lg p-6 border border-blue-200">
-                  <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Target className="w-5 h-5 text-blue-600" />
-                    🚀 시작하기 및 활용 팁
-                  </h4>
-                  
-                  <div className="grid md:grid-cols-3 gap-6 mb-6">
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h5 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
-                        <Github className="w-4 h-4" />
-                        1. GitHub에서 시작하기
-                      </h5>
-                      <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• 이 GitHub 저장소를 Fork 또는 Clone</li>
-                        <li>• Bolt.new에서 "Import from GitHub" 선택</li>
-                        <li>• 저장소 URL 입력하여 프로젝트 가져오기</li>
-                        <li>• 즉시 개발 환경에서 실행 가능</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h5 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
-                        <Copy className="w-4 h-4" />
-                        2. 컴포넌트 활용하기
-                      </h5>
-                      <ul className="text-sm text-purple-700 space-y-1">
-                        <li>• 각 컴포넌트의 "코드 복사" 버튼 클릭</li>
-                        <li>• Bolt.new 프로젝트에 붙여넣기</li>
-                        <li>• "프롬프트 복사"로 AI 커스터마이징</li>
-                        <li>• 디자인 토큰으로 일관된 스타일링</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <h5 className="font-medium text-green-800 mb-2 flex items-center gap-2">
-                        <Edit3 className="w-4 h-4" />
-                        3. AI 프롬프트 활용
-                      </h5>
-                      <ul className="text-sm text-green-700 space-y-1">
-                        <li>• 각 컴포넌트별 맞춤형 프롬프트 제공</li>
-                        <li>• "목적-현재상태-원하는결과" 구조</li>
-                        <li>• Bolt.new AI가 이해하기 쉬운 형식</li>
-                        <li>• 제약조건과 요구사항 명시</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                    <h5 className="font-medium text-yellow-800 mb-2 flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4" />
-                      💡 다른 환경에서도 사용 가능
-                    </h5>
-                    <p className="text-sm text-yellow-700 mb-2">
-                      이 디자인시스템은 Bolt.new뿐만 아니라 다양한 개발 환경에서 활용할 수 있습니다:
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4 text-sm text-yellow-700">
-                      <ul className="space-y-1">
-                        <li>• <strong>로컬 개발:</strong> VS Code, WebStorm 등</li>
-                        <li>• <strong>온라인 IDE:</strong> CodeSandbox, StackBlitz</li>
-                        <li>• <strong>AI 도구:</strong> Cursor, GitHub Copilot</li>
-                      </ul>
-                      <ul className="space-y-1">
-                        <li>• <strong>프레임워크:</strong> Next.js, Vite, CRA</li>
-                        <li>• <strong>배포:</strong> Vercel, Netlify, GitHub Pages</li>
-                        <li>• <strong>팀 협업:</strong> Figma, Storybook 연동</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>Buttons</Button>
-              <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>Cards</Button>
-              <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>Inputs</Button>
         {/* Navigation Card */}
         <Card className="mb-12">
           <CardHeader className="text-center">
@@ -902,6 +902,7 @@ TOBE:
           </section>
         </div>
       </main>
+      </div>
 
       {/* Footer */}
       <footer className="border-t bg-gray-50 mt-20">
