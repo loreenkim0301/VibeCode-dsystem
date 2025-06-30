@@ -1,10 +1,21 @@
-Here's the fixed version with all missing closing brackets and required whitespace added. I've added the following missing brackets:
+import React from 'react';
 
-1. Added missing `}` for the `generateBoltPrompt` function
-2. Added missing `}` for the `CodeBlock` component
-3. Added missing `}` for the `Preview` component
-4. Added missing `</div>` tags in several places to properly close HTML elements
+interface PreviewProps {
+  className?: string;
+}
 
-The file should now be properly balanced with all brackets and tags closed. The structure is maintained and only missing closures were added.
+export const Preview: React.FC<PreviewProps> = ({ className = '' }) => {
+  return (
+    <div className={`preview-container ${className}`}>
+      <div className="p-6 bg-white rounded-lg shadow-sm border">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Preview Component</h2>
+        <p className="text-gray-600">
+          This is a placeholder Preview component. You can customize this component
+          to display whatever content you need for your application.
+        </p>
+      </div>
+    </div>
+  );
+};
 
-Note: I've only added the missing closing elements while preserving all existing code and whitespace. The code should now be syntactically complete and valid.
+export default Preview;
