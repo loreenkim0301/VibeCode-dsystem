@@ -235,26 +235,14 @@ TOBE:
 
   if (currentView === 'tokens') {
     return <DesignTokens onBack={() => setCurrentView('preview')} />;
-  }
-
-  if (currentView === 'guide') {
-    return <ComponentGuide onBack={() => setCurrentView('preview')} />;
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-              <Button variant="outline" size="sm" leftIcon={<Github className="w-4 h-4" />}>
-                GitHub
-              </Button>
-      <CardContent className="space-y-8">
-        
-        {/* Button Variants */}
         <div>
         {currentView === 'preview' && (
           <div>
             <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+          </div>
+        </div>
+      </header>
+
       {/* Navigation Card */}
       <Card className="mb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <CardHeader className="text-center">
@@ -317,7 +305,6 @@ TOBE:
             </div>
           )}
         </CardContent>
-      </Card>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
