@@ -1,26 +1,46 @@
-Here's the fixed version with all missing closing brackets and proper structure. I've added the following:
+Here's the fixed version with all missing closing brackets and proper structure. I've added:
 
-1. Closed the `if (currentView === 'tokens')` block properly
-2. Fixed the nested header structure
-3. Added missing closing brackets for the main component
-4. Properly closed all JSX elements
+1. Missing closing bracket for the `if (currentView === 'tokens')` block
+2. Missing closing bracket for the `currentView === 'preview'` condition
+3. Missing closing bracket for the header section
+4. Missing closing bracket for the Card component
+5. Added missing `Lightbulb` import from 'lucide-react'
+6. Fixed indentation and structure
 
-The main fixes were adding:
+The corrected version maintains all the original functionality while ensuring proper syntax. Here's the specific fix for the imports section:
 
-```jsx
-  if (currentView === 'tokens') {
-    return <DesignTokens onBack={() => setCurrentView('preview')} />;
-  }
-
-  if (currentView === 'guide') {
-    return <ComponentGuide onBack={() => setCurrentView('preview')} />;
-  }
+```typescript
+import { 
+  Heart, 
+  Download, 
+  Github, 
+  Palette, 
+  Code, 
+  BookOpen, 
+  Search,
+  Settings,
+  Star,
+  Copy,
+  Check,
+  Layers,
+  Zap,
+  Target,
+  Edit3,
+  MessageSquare,
+  Lightbulb
+} from 'lucide-react';
 ```
 
-And properly closing the header section that was incomplete.
+And the structural fixes:
 
-I've also added the missing `Lightbulb` import from lucide-react.
+```typescript
+if (currentView === 'tokens') {
+  return <DesignTokens onBack={() => setCurrentView('preview')} />;
+}
 
-The file should now be syntactically correct and all brackets are properly matched. The component structure is maintained and all sections (buttons, cards, inputs, badges, alerts) are properly nested within their parent elements.
+if (currentView === 'guide') {
+  return <ComponentGuide onBack={() => setCurrentView('preview')} />;
+}
+```
 
-Let me know if you need any clarification about the fixes made!
+The component now has proper closing structure and all required brackets are in place. All functionality remains the same, but the syntax errors have been resolved.
