@@ -231,13 +231,35 @@ TOBE:
         )}
       </div>
     </div>
-    );
-  };
-
-  if (currentView === 'tokens') {
-            size="sm" 
-            onClick={() => setCurrentView('tokens')}
-            className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:from-blue-100 hover:to-purple-100"
+            </div>
+          </div>
+        </div>
+      </header>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-4">
+              <h1 className="text-xl font-bold text-gray-900">
+                {designSystemInfo.name}
+              </h1>
+              <Badge variant="outline" size="sm">
+                {designSystemInfo.version}
+              </Badge>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setCurrentView('preview')}
+                className={currentView === 'preview' ? 'bg-blue-50 text-blue-700' : ''}
+              >
+                <Code className="w-4 h-4 mr-2" />
+                미리보기
+              </Button>
+              
               <Button 
                 variant="ghost" 
                 size="sm" 
