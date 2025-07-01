@@ -231,9 +231,9 @@ TOBE:
         )}
       </div>
     </div>
-            </div>
-            
-            <div className="flex items-center gap-3">
+    );
+  };
+
   if (currentView === 'tokens') {
     return <DesignTokens onBack={() => setCurrentView('preview')} />;
   }
