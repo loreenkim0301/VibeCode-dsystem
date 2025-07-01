@@ -42,6 +42,7 @@ const Preview: React.FC = () => {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Record<string, 'prompt' | 'code'>>({});
   const [currentView, setCurrentView] = useState<'preview' | 'tokens' | 'guide'>('preview');
+  const [activeSection, setActiveSection] = useState<string>('buttons');
 
   const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
@@ -50,6 +51,7 @@ const Preview: React.FC = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
