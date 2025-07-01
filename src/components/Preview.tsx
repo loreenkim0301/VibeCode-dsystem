@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import DesignTokens from './DesignTokens';
+import ComponentGuide from './ComponentGuide';
 import { 
   Button, 
   Card, 
@@ -33,13 +34,14 @@ import {
   Zap,
   Target,
   Edit3,
-  MessageSquare
+  MessageSquare,
+  Lightbulb
 } from 'lucide-react';
 
 const Preview: React.FC = () => {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Record<string, 'prompt' | 'code'>>({});
-  const [currentView, setCurrentView] = useState<'preview' | 'tokens'>('preview');
+  const [currentView, setCurrentView] = useState<'preview' | 'tokens' | 'guide'>('preview');
 
   const copyToClipboard = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
@@ -233,22 +235,18 @@ TOBE:
   };
 
   if (currentView === 'tokens') {
-    return <DesignTokens onBack={() => setCurrentView('preview')} />;
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-              <Button variant="outline" size="sm" leftIcon={<Github className="w-4 h-4" />}>
-                GitHub
-              </Button>
-          <Button 
-            variant="ghost" 
             size="sm" 
             onClick={() => setCurrentView('tokens')}
             className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:from-blue-100 hover:to-purple-100"
-          >
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setCurrentView('tokens')}
+                className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:from-blue-100 hover:to-purple-100"
+              >
+                <Palette className="w-4 h-4 mr-2" />
+                디자인 토큰 보기
+              </Button>
             </div>
           </div>
         </div>
@@ -350,11 +348,78 @@ TOBE:
             <Palette className="w-4 h-4 mr-2" />
             디자인 토큰 보기
           </Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('buttons')}>Buttons</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('cards')}>Cards</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('inputs')}>Inputs</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('badges')}>Badges</Button>
-          <Button variant="outline" size="sm" onClick={() => scrollToSection('alerts')}>Alerts</Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => setCurrentView('guide')}
+            className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 hover:from-green-100 hover:to-blue-100"
+          >
+            <BookOpen className="w-4 h-4 mr-2" />
+            컴포넌트 가이드
+          </Button>
+          
+          <div className="w-px h-8 bg-gray-300 mx-2"></div>
+          
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('buttons')}
+            className={`transition-all duration-200 ${
+              activeSection === 'buttons'
+                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
+                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+            }`}
+          >
+            Buttons
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('cards')}
+            className={`transition-all duration-200 ${
+              activeSection === 'cards'
+                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
+                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+            }`}
+          >
+            Cards
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('inputs')}
+            className={`transition-all duration-200 ${
+              activeSection === 'inputs'
+                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
+                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+            }`}
+          >
+            Inputs
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('badges')}
+            className={`transition-all duration-200 ${
+              activeSection === 'badges'
+                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
+                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+            }`}
+          >
+            Badges
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('alerts')}
+            className={`transition-all duration-200 ${
+              activeSection === 'alerts'
+                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
+                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+            }`}
+          >
+            Alerts
+          </Button>
         </div>
 
         {/* Component Sections */}
