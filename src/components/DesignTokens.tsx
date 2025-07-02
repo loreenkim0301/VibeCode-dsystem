@@ -435,12 +435,12 @@ const DesignTokens: React.FC<DesignTokensProps> = ({ onBack }) => {
                         onClick={() => setActiveSection(section.id)}
                         className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-md transition-colors ${
                           activeSection === section.id
-                            ? 'bg-blue-600 text-white font-semibold shadow-md border border-blue-700'
-                            : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700 border border-transparent'
+                            ? 'bg-neutral-50 text-blue-700 font-semibold shadow-sm border border-blue-200'
+                            : 'text-gray-700 hover:bg-neutral-50 hover:text-blue-700 border border-transparent'
                         }`}
                       >
                         <Icon className={`w-4 h-4 ${
-                          activeSection === section.id ? 'text-white' : 'text-gray-600'
+                          activeSection === section.id ? 'text-blue-600' : 'text-gray-600'
                         }`} />
                         {section.label}
                       </button>
