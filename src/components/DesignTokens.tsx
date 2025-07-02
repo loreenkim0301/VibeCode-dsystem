@@ -418,52 +418,29 @@ const DesignTokens: React.FC<DesignTokensProps> = ({ onBack }) => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Navigation */}
           <div className="lg:w-64 flex-shrink-0">
-            <Card className="sticky top-24 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 backdrop-blur-sm border-blue-100/50 shadow-lg">
+            <Card className="sticky top-24">
               <CardHeader>
-                <CardTitle className="text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold">
-                  토큰 카테고리
-                </CardTitle>
-                <CardDescription className="text-gray-600">
+                <CardTitle className="text-lg">토큰 카테고리</CardTitle>
+                <CardDescription>
                   각 카테고리를 클릭하여 토큰을 확인하세요
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <nav className="space-y-3">
+                <nav className="space-y-2">
                   {sections.map((section) => {
                     const Icon = section.icon;
                     return (
                       <button
                         key={section.id}
                         onClick={() => setActiveSection(section.id)}
-                        className={`w-full flex items-center gap-3 px-4 py-3 text-left rounded-xl transition-all duration-300 group ${
+                        className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-md transition-colors bg-transparent ${
                           activeSection === section.id
-                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-lg transform scale-105 border-2 border-blue-300'
-                            : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-700 hover:shadow-md hover:scale-102 border-2 border-transparent hover:border-blue-200/50'
+                            ? 'bg-blue-100 text-blue-900 font-medium'
+                            : 'text-gray-700 hover:bg-gray-100'
                         }`}
                       >
-                        <div className={`p-1.5 rounded-lg transition-all duration-300 ${
-                          activeSection === section.id 
-                            ? 'bg-white/20 shadow-inner' 
-                            : 'group-hover:bg-blue-100/50'
-                        }`}>
-                          <Icon className={`w-4 h-4 transition-all duration-300 ${
-                            activeSection === section.id 
-                              ? 'text-white drop-shadow-sm' 
-                              : 'text-gray-600 group-hover:text-blue-600'
-                          }`} />
-                        </div>
-                        <span className={`transition-all duration-300 ${
-                          activeSection === section.id 
-                            ? 'text-white drop-shadow-sm' 
-                            : 'group-hover:text-blue-700'
-                        }`}>
-                          {section.label}
-                        </span>
-                        {activeSection === section.id && (
-                          <div className="ml-auto">
-                            <div className="w-2 h-2 bg-white rounded-full shadow-sm animate-pulse"></div>
-                          </div>
-                        )}
+                        <Icon className="w-4 h-4" />
+                        {section.label}
                       </button>
                     );
                   })}
