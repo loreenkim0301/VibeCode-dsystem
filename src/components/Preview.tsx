@@ -16,6 +16,10 @@ import {
   Input,
   Badge,
   Alert,
+  NavigationSidebar,
+  NavigationHeader,
+  NavigationGroup,
+  NavigationItem,
   designSystemInfo
 } from '../design-system';
 import { 
@@ -35,7 +39,15 @@ import {
   Target,
   Edit3,
   MessageSquare,
-  Lightbulb
+  Lightbulb,
+  Home,
+  Users,
+  FileText,
+  BarChart3,
+  HelpCircle,
+  Bell,
+  Menu,
+  X
 } from 'lucide-react';
 
 const Preview: React.FC = () => {
@@ -443,6 +455,18 @@ TOBE:
             }`}
           >
             Alerts
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => scrollToSection('navigation')}
+            className={`px-4 py-2 transition-all duration-300 ${
+              activeSection === 'navigation'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
+            }`}
+          >
+            Navigation
           </Button>
         </div>
 
@@ -855,6 +879,236 @@ TOBE:
 >
   이 알림은 닫기 버튼을 클릭하여 제거할 수 있습니다.
 </Alert>`}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Navigation Section */}
+          <section id="navigation">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Menu className="w-5 h-5" />
+                  Navigation
+                </CardTitle>
+                <CardDescription>
+                  사이드바 네비게이션과 메뉴 컴포넌트들
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                
+                <div>
+                  <h4 className="text-lg font-semibold mb-4">기본 사이드바 네비게이션</h4>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden mb-4" style={{ height: '400px' }}>
+                    <NavigationSidebar width="md" shadow={false} border={false}>
+                      <NavigationHeader
+                        logo={
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">DS</span>
+                          </div>
+                        }
+                        title="Design System"
+                        subtitle="v1.1.0"
+                        actions={
+                          <Button variant="ghost" size="sm" iconOnly>
+                            <Bell className="w-4 h-4" />
+                          </Button>
+                        }
+                      />
+                      
+                      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+                        <NavigationGroup>
+                          <NavigationItem
+                            icon={<Home className="w-5 h-5" />}
+                            label="대시보드"
+                            active
+                          />
+                          <NavigationItem
+                            icon={<Users className="w-5 h-5" />}
+                            label="사용자 관리"
+                            badge="12"
+                            badgeVariant="primary"
+                          />
+                          <NavigationItem
+                            icon={<FileText className="w-5 h-5" />}
+                            label="문서"
+                            hasSubmenu
+                            expanded
+                          />
+                        </NavigationGroup>
+                        
+                        <NavigationGroup title="분석" collapsible>
+                          <NavigationItem
+                            icon={<BarChart3 className="w-5 h-5" />}
+                            label="통계"
+                          />
+                          <NavigationItem
+                            icon={<FileText className="w-5 h-5" />}
+                            label="리포트"
+                            badge="새로움"
+                            badgeVariant="success"
+                          />
+                        </NavigationGroup>
+                        
+                        <NavigationGroup title="설정">
+                          <NavigationItem
+                            icon={<Settings className="w-5 h-5" />}
+                            label="시스템 설정"
+                          />
+                          <NavigationItem
+                            icon={<HelpCircle className="w-5 h-5" />}
+                            label="도움말"
+                          />
+                        </NavigationGroup>
+                      </div>
+                    </NavigationSidebar>
+                  </div>
+                  <CodeBlock 
+                    id="navigation-basic"
+                    componentType="navigation"
+                    code={`<NavigationSidebar width="md">
+  <NavigationHeader
+    logo={<Logo />}
+    title="Design System"
+    subtitle="v1.1.0"
+    actions={<NotificationButton />}
+  />
+  
+  <div className="flex-1 overflow-y-auto p-4 space-y-6">
+    <NavigationGroup>
+      <NavigationItem
+        icon={<Home />}
+        label="대시보드"
+        active
+      />
+      <NavigationItem
+        icon={<Users />}
+        label="사용자 관리"
+        badge="12"
+        badgeVariant="primary"
+      />
+    </NavigationGroup>
+  </div>
+</NavigationSidebar>`}
+                  />
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-4">접힌 사이드바</h4>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden mb-4" style={{ height: '300px' }}>
+                    <NavigationSidebar width="md" collapsed shadow={false} border={false}>
+                      <NavigationHeader
+                        logo={
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">DS</span>
+                          </div>
+                        }
+                      />
+                      
+                      <div className="flex-1 overflow-y-auto p-2 space-y-2">
+                        <NavigationItem
+                          icon={<Home className="w-5 h-5" />}
+                          label="대시보드"
+                          active
+                        />
+                        <NavigationItem
+                          icon={<Users className="w-5 h-5" />}
+                          label="사용자"
+                        />
+                        <NavigationItem
+                          icon={<BarChart3 className="w-5 h-5" />}
+                          label="통계"
+                        />
+                        <NavigationItem
+                          icon={<Settings className="w-5 h-5" />}
+                          label="설정"
+                        />
+                      </div>
+                    </NavigationSidebar>
+                  </div>
+                  <CodeBlock 
+                    id="navigation-collapsed"
+                    componentType="navigation"
+                    code={`<NavigationSidebar width="md" collapsed>
+  <NavigationHeader logo={<Logo />} />
+  
+  <div className="flex-1 overflow-y-auto p-2 space-y-2">
+    <NavigationItem icon={<Home />} label="대시보드" active />
+    <NavigationItem icon={<Users />} label="사용자" />
+    <NavigationItem icon={<Settings />} label="설정" />
+  </div>
+</NavigationSidebar>`}
+                  />
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-4">네비게이션 아이템 상태</h4>
+                  <div className="grid md:grid-cols-2 gap-6 mb-4">
+                    <div className="space-y-2">
+                      <h5 className="text-sm font-medium text-gray-700 mb-3">기본 상태</h5>
+                      <NavigationItem
+                        icon={<Home className="w-5 h-5" />}
+                        label="일반 메뉴"
+                      />
+                      <NavigationItem
+                        icon={<Users className="w-5 h-5" />}
+                        label="활성 메뉴"
+                        active
+                      />
+                      <NavigationItem
+                        icon={<Settings className="w-5 h-5" />}
+                        label="비활성 메뉴"
+                        disabled
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <h5 className="text-sm font-medium text-gray-700 mb-3">배지 및 서브메뉴</h5>
+                      <NavigationItem
+                        icon={<Bell className="w-5 h-5" />}
+                        label="알림"
+                        badge="5"
+                        badgeVariant="error"
+                      />
+                      <NavigationItem
+                        icon={<FileText className="w-5 h-5" />}
+                        label="문서"
+                        hasSubmenu
+                        expanded
+                      />
+                      <NavigationItem
+                        icon={<BarChart3 className="w-5 h-5" />}
+                        label="분석"
+                        hasSubmenu
+                      />
+                    </div>
+                  </div>
+                  <CodeBlock 
+                    id="navigation-states"
+                    componentType="navigation"
+                    code={`<NavigationItem
+  icon={<Home />}
+  label="일반 메뉴"
+/>
+<NavigationItem
+  icon={<Users />}
+  label="활성 메뉴"
+  active
+/>
+<NavigationItem
+  icon={<Bell />}
+  label="알림"
+  badge="5"
+  badgeVariant="error"
+/>
+<NavigationItem
+  icon={<FileText />}
+  label="문서"
+  hasSubmenu
+  expanded
+/>`}
                   />
                 </div>
               </CardContent>
