@@ -376,22 +376,22 @@ TOBE:
             variant="ghost" 
             size="sm" 
             onClick={() => setCurrentView('guide')}
-            className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 hover:from-green-100 hover:to-blue-100"
+            className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 hover:from-green-100 hover:to-blue-100 px-4 py-2"
           >
             <BookOpen className="w-4 h-4 mr-2" />
             컴포넌트 가이드
           </Button>
           
-          <div className="w-px h-8 bg-gray-300 mx-2"></div>
+          <div className="w-px h-8 bg-gray-300 mx-3"></div>
           
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={() => scrollToSection('buttons')}
-            className={`transition-all duration-200 ${
+            className={`px-4 py-2 transition-all duration-300 ${
               activeSection === 'buttons'
-                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
-                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
             }`}
           >
             Buttons
@@ -400,10 +400,10 @@ TOBE:
             variant="ghost" 
             size="sm" 
             onClick={() => scrollToSection('cards')}
-            className={`transition-all duration-200 ${
+            className={`px-4 py-2 transition-all duration-300 ${
               activeSection === 'cards'
-                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
-                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
             }`}
           >
             Cards
@@ -412,10 +412,10 @@ TOBE:
             variant="ghost" 
             size="sm" 
             onClick={() => scrollToSection('inputs')}
-            className={`transition-all duration-200 ${
+            className={`px-4 py-2 transition-all duration-300 ${
               activeSection === 'inputs'
-                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
-                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
             }`}
           >
             Inputs
@@ -424,10 +424,10 @@ TOBE:
             variant="ghost" 
             size="sm" 
             onClick={() => scrollToSection('badges')}
-            className={`transition-all duration-200 ${
+            className={`px-4 py-2 transition-all duration-300 ${
               activeSection === 'badges'
-                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
-                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
             }`}
           >
             Badges
@@ -436,10 +436,10 @@ TOBE:
             variant="ghost" 
             size="sm" 
             onClick={() => scrollToSection('alerts')}
-            className={`transition-all duration-200 ${
+            className={`px-4 py-2 transition-all duration-300 ${
               activeSection === 'alerts'
-                ? 'bg-blue-100 text-blue-900 font-medium border border-blue-300 shadow-sm'
-                : 'text-gray-700 hover:bg-gray-100 border border-transparent'
+                ? 'bg-blue-100 text-blue-900 font-semibold border border-blue-300 shadow-md transform scale-105'
+                : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-transparent hover:border-gray-200'
             }`}
           >
             Alerts
