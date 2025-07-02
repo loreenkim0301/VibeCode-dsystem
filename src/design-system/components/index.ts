@@ -16,6 +16,12 @@ import {
 import { Input } from './Input/Input';
 import { Badge } from './Badge/Badge';
 import { Alert } from './Alert/Alert';
+import { 
+  NavigationSidebar,
+  NavigationHeader,
+  NavigationGroup,
+  NavigationItem,
+} from './Navigation';
 
 // 타입 import
 import type { ButtonProps } from './Button/Button';
@@ -23,6 +29,12 @@ import type { CardProps } from './Card/Card';
 import type { InputProps } from './Input/Input';
 import type { BadgeProps } from './Badge/Badge';
 import type { AlertProps } from './Alert/Alert';
+import type { 
+  NavigationSidebarProps,
+  NavigationHeaderProps,
+  NavigationGroupProps,
+  NavigationItemProps,
+} from './Navigation';
 
 // 컴포넌트 export
 export { 
@@ -35,7 +47,11 @@ export {
   CardFooter,
   Input,
   Badge,
-  Alert
+  Alert,
+  NavigationSidebar,
+  NavigationHeader,
+  NavigationGroup,
+  NavigationItem,
 };
 
 // 타입 export
@@ -44,7 +60,11 @@ export type {
   CardProps,
   InputProps,
   BadgeProps,
-  AlertProps
+  AlertProps,
+  NavigationSidebarProps,
+  NavigationHeaderProps,
+  NavigationGroupProps,
+  NavigationItemProps,
 };
 
 // 컴포넌트 카테고리별 그룹핑
@@ -68,4 +88,10 @@ export const LayoutComponents = {
 export const FeedbackComponents = {
   Alert,
   Badge,
+};
+export const NavigationComponents = {
+  NavigationSidebar,
+  NavigationHeader,
+  NavigationGroup,
+  NavigationItem,
 };
